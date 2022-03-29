@@ -42,7 +42,7 @@
 
 		{% if messages %}
 		{% for message in messages %}
-			<div id="toast"><img id="img" src={% static "icons/message.svg"%}/><div id="desc">{{ message }}</div></div>
+			<div id="toast"><div id="img"></div><div id="desc">{{ message }}</div></div>
       <script>
 				function launch_toast() {
 					let x = document.getElementById("toast")
