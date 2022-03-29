@@ -1,0 +1,282 @@
+body {
+  animation: gradient 10s ease infinite;
+  background-image: linear-gradient(
+    135deg,
+    #8ac1ef,
+    #ca6ce9,
+    #8ac1ee,
+    #e93356
+  );
+  background-size: 400% 400%;
+  color: #333333;
+  font-family: "Open Sans", sans-serif;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h4, h5 {
+  padding: 6px;
+}
+
+.box-form {
+  align-items: stretch;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 6px #090b6f85;
+  display: flex;
+  flex: 1 1 100%;
+  height: 80vh;
+  justify-content: space-between;
+  margin: 10vh auto;
+  overflow: hidden;
+  width: 60vw;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 980px) {
+  .box-form {
+    align-content: center;
+    align-items: center;
+    flex-flow: wrap;
+    height: auto;
+    text-align: center;
+  }
+}
+
+.box-form div {
+  height: auto;
+}
+
+.box-form .left {
+  background-size: 100% 100%;
+  background: url('/static/images/background.png') no-repeat center center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.box-form .left .overlay {
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  padding: 30px;
+  width: 100%;
+}
+
+.box-form .left .overlay h1 {
+  line-height: 4vmax;
+  font-size: 3vmax;
+  font-weight: 900;
+  /* line-height: 1; */
+  margin-bottom: 0vh;
+  margin-top: 15vh;
+}
+
+.box-form .right {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-top: 2vh;
+  width: 30vw;
+}
+
+@media (max-width: 980px) {
+  .box-form .left {
+		background-size: auto auto;
+	}
+
+  .box-form .right {
+    height: 50vh;
+    width: 50vw;
+  }
+}
+
+.box-form .right h5 {
+  font-size: 1.5vmax;
+  line-height: 0;
+  text-align: center;
+}
+
+.box-form .right p {
+  color: #a0a3ab;
+  font-size: 2vh;
+}
+
+.box-form .right .inputs {
+  overflow: hidden;
+}
+
+.box-form .right input {
+  border: none;
+  border-bottom: 2px solid #b0b3b9;
+  font-size: 16px;
+  margin-top: 16px;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-left: 30px;
+  position: relative;
+}
+
+label::before {
+  background: transparent;
+  border-radius: 4px;
+  border: 3px solid #2e26dd;
+  color: transparent;
+  content: " \f00c";
+  font-family: FontAwesome;
+  left: -30px;
+  position: absolute;
+  transition: all 0.2s linear;
+}
+
+label:hover::before {
+  background: #8534dd;
+  color: #fff;
+  content: " \f00c";
+  cursor: pointer;
+  font-family: FontAwesome;
+}
+
+label span.text-checkbox {
+  cursor: pointer;
+  display: inline-block;
+  height: auto;
+  position: relative;
+  transition: all 0.9s linear;
+}
+
+label input[type="checkbox"] {
+  display: none;
+}
+
+.box-form .right button {
+  background-image: linear-gradient(135deg, #1015b5 10%, #b55ae3 100%);
+  border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 4px 20px 0px #050608a6;
+  color: #fff;
+  display: inline-block;
+  /* float: right; */
+  align-self: flex-end;
+  font-size: 16px;
+  outline: 0;
+  padding: 12px 35px;
+  transition: .15s ease;
+}
+
+.box-form .right button:active {
+  transform: translateY(.2rem);
+}
+
+#toast {
+  background-color: #333;
+  border-radius: 2px;
+  bottom: 30px;
+  color: #fff;
+  font-size: 17px;
+  height: 50px;
+  left: 0;right:0;
+  margin: auto;
+  max-width: 50px;
+  position: fixed;
+  text-align: center;
+  visibility: hidden;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+#toast #img {
+  background: url('/static/icons/message.svg') no-repeat center center;
+  background-size: 26px 26px;
+  background-color: #111;
+  box-sizing: border-box;
+  color: #fff;
+  float: left;      
+  height: 100%;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  width: 50px;
+}
+
+#toast #desc {        
+  color: #fff;
+  overflow: hidden;
+  padding: 16px;
+  white-space: nowrap;
+}
+
+#toast.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+  from {min-width: 50px} 
+  to {min-width: 350px}
+}
+
+@keyframes expand {
+  from {min-width: 50px}
+  to {min-width: 350px}
+}
+
+@-webkit-keyframes stay {
+  from {min-width: 350px} 
+  to {min-width: 350px}
+}
+
+@keyframes stay {
+  from {min-width: 350px}
+  to {min-width: 350px}
+}
+
+@-webkit-keyframes shrink {
+  from {min-width: 350px;} 
+  to {min-width: 50px;}
+}
+
+@keyframes shrink {
+  from {min-width: 350px;} 
+  to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 60px; opacity: 0;}
+}

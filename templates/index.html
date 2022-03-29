@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Iris Prediction App</title>
+    <script src="https://kit.fontawesome.com/795c83d4fb.js" crossorigin="anonymous"></script>
+    <link href={% static "css/styles.css" %} rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="box-form">
+      <div class="left">
+        <div class="overlay">
+					<h1>Iris Flower <br/> Class Prediction App</h1>
+          <p>Prediction result will be sent to the provided email address.</p>
+        </div>
+      </div>
+
+      <form method="post" action="{% url "submit_data" %}" class="right">
+				{% csrf_token %}
+        <h5>Enter all the fields below</h5>
+        <div class="inputs">
+          <input type="text" placeholder="Sepal Length (in cm)" name="sepal_length" />
+          <br />
+          <input type="text" placeholder="Sepal Width (in cm)" name="sepal_width" />
+          <br />
+          <input type="text" placeholder="Petal Length (in cm)" name="petal_length" />
+          <br />
+          <input type="text" placeholder="Petal Width (in cm)" name="petal_width" />
+					<br/>
+					<input type="email" placeholder="Email Address" name="email" />
+        </div>
+        <br />
+        <button type="submit" >Predict</button>
+      </form>
+    </div>
+
+		{% if messages %}
+		{% for message in messages %}
+			<div id="toast"><img id="img" src={% static "icons/message.svg"%}/><div id="desc">{{ message }}</div></div>
+      <script>
+				function launch_toast() {
+					let x = document.getElementById("toast")
+					x.className = "show";
+					setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+				}
+				launch_toast();
+			</script>
+			 {% endfor %}
+    {% endif %}
+
+		<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+</html>
